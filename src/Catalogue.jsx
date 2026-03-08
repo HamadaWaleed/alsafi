@@ -508,148 +508,6 @@ const CSS = `
   .tst.err .tsi{background:rgba(192,57,43,0.10);color:var(--err)}
   .tsm{font-size:13px;font-weight:700;color:var(--t)}
   .pn{text-align:center;padding:16px;color:var(--t3);font-size:12px}
-
-  /* ─── HAMBURGER BUTTON ─────────────────────────────────────────────────── */
-  .hbg{display:none;width:38px;height:38px;border-radius:9px;background:var(--sf2);border:1.5px solid var(--bd);align-items:center;justify-content:center;cursor:pointer;color:var(--t2);flex-shrink:0;transition:all var(--tr)}
-  .hbg:hover{background:var(--sf3);color:var(--t)}
-
-  /* ─── MOBILE SIDEBAR OVERLAY ───────────────────────────────────────────── */
-  .sb-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,75,0.45);backdrop-filter:blur(3px);z-index:99}
-
-  /* ─── MOBILE BOTTOM NAV ─────────────────────────────────────────────────── */
-  .bnav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--sf);border-top:1.5px solid var(--bd);z-index:200;padding:6px 0 max(6px,env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(30,58,138,0.10)}
-  .bnav{grid-template-columns:repeat(4,1fr)}
-  .bni{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 4px;cursor:pointer;color:var(--t3);font-size:10px;font-weight:700;border-radius:8px;transition:all var(--tr);-webkit-tap-highlight-color:transparent}
-  .bni:hover,.bni.on{color:var(--acc)}
-  .bni.on{background:rgba(30,58,138,0.06)}
-  .bni svg{flex-shrink:0}
-
-  /* ─── TABLET (≤900px) ───────────────────────────────────────────────────── */
-  @media(max-width:900px){
-    :root{--sb:240px}
-    .pg{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-    .pa{padding:12px 14px}
-    .hd{padding:0 16px;gap:10px}
-    .fb{padding:8px 14px}
-    .rb{padding:8px 14px}
-    .atw{padding:12px 14px}
-    .adtb{padding:10px 14px}
-    .adss{gap:10px}
-    .ads{padding:8px 12px}
-    .fg{grid-template-columns:1fr 1fr}
-  }
-
-  /* ─── MOBILE (≤640px) ───────────────────────────────────────────────────── */
-  @media(max-width:640px){
-    /* show hamburger, hide desktop sidebar by default */
-    .hbg{display:flex}
-    .sb-overlay{display:block}
-
-    /* sidebar becomes a slide-over drawer */
-    .sb{position:fixed;top:0;left:0;height:100%;width:280px;transform:translateX(-100%);transition:transform 0.28s cubic-bezier(.4,0,.2,1);z-index:100}
-    .sb.sb-open{transform:translateX(0)}
-
-    /* show mobile bottom nav */
-    .bnav{display:grid}
-
-    /* main area takes full width, pad bottom for nav bar */
-    .mn{width:100%;padding-bottom:64px}
-
-    /* header */
-    .hd{height:56px;min-height:56px;padding:0 12px;gap:8px}
-    .pt{font-size:14px}
-    .sw{max-width:none;flex:1}
-    .si{font-size:13px;padding:8px 12px 8px 34px}
-    .ha{gap:6px}
-    .ib{width:32px;height:32px}
-
-    /* filters */
-    .fb{padding:8px 12px;gap:6px}
-    .fl{display:none}
-    .fdiv{display:none}
-    .fc{padding:5px 10px;font-size:11px}
-    .rb{padding:6px 12px}
-
-    /* product grid — 2 col on mobile */
-    .pa{padding:10px 12px}
-    .pg{grid-template-columns:repeat(2,1fr);gap:10px}
-    .pg.lv{grid-template-columns:1fr;gap:8px}
-    .ci{height:100px}
-    .cb{padding:10px}
-    .cn{font-size:12px}
-    .cd{font-size:11px;-webkit-line-clamp:2}
-    .csk{font-size:10px}
-
-    /* always show card action buttons on touch */
-    .ca{opacity:1}
-    .cab{width:30px;height:30px}
-
-    /* modal — full screen bottom sheet */
-    .ov{padding:0;align-items:flex-end}
-    .mod{border-radius:20px 20px 0 0;max-width:100%;max-height:92vh;border-bottom:none}
-    .mod.cf-mod{border-radius:20px 20px 0 0;max-width:100%}
-    .mod.adm-mod{border-radius:20px 20px 0 0;max-width:100%}
-    .mh{padding:16px 16px 12px}
-    .mth{width:56px;height:56px;min-width:56px;font-size:28px}
-    .mti{font-size:15px}
-    .mb{padding:16px}
-    .sg{grid-template-columns:1fr 1fr}
-    .rg{grid-template-columns:repeat(2,1fr)}
-
-    /* admin panel */
-    .adh{padding:16px}
-    .adht{font-size:17px}
-    .adss{gap:8px}
-    .ads{padding:8px 10px}
-    .adsv{font-size:17px}
-    .adtb{padding:10px 12px;gap:8px;flex-wrap:wrap}
-    .asw{min-width:0;max-width:none;flex:1}
-    .atw{padding:8px 0;overflow-x:auto}
-    .at{min-width:560px}
-    .at th,.at td{padding:8px 10px}
-
-    /* form */
-    .fg{grid-template-columns:1fr}
-    .fgr.full{grid-column:1}
-    .fmh{padding:16px}
-    .fmb{padding:14px 16px}
-    .fmf{padding:12px 16px;flex-wrap:wrap}
-    .fmf .btn{flex:1;justify-content:center}
-
-    /* confirm dialog */
-    .cfb{padding:20px 20px 14px}
-    .cff{padding:0 16px 16px}
-
-    /* toast */
-    .tc{bottom:76px;right:10px;left:10px}
-    .tst{min-width:0;width:100%}
-
-    /* recently viewed */
-    .rv{padding:8px 12px}
-
-    /* search dropdown */
-    .s-dd{max-height:280px}
-    .s-rsk{display:none}
-  }
-
-  /* ─── SMALL MOBILE (≤380px) ─────────────────────────────────────────────── */
-  @media(max-width:380px){
-    .pg{grid-template-columns:1fr}
-    .hd{gap:6px}
-    .pt{font-size:13px}
-    .ib{display:none}
-    .ha .ib:first-child{display:flex}
-  }
-
-  /* ─── LARGE SCREENS (≥1400px) ───────────────────────────────────────────── */
-  @media(min-width:1400px){
-    :root{--sb:290px}
-    .pg{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-    .pa{padding:20px 28px}
-    .hd{padding:0 28px}
-    .fb{padding:10px 28px}
-    .rb{padding:10px 28px}
-  }
 `;
 
 // ─── TOAST ────────────────────────────────────────────────────────────────────
@@ -955,7 +813,7 @@ function PCard({ p, onClick, onFav, isFav, view, q }) {
           {p.isAdmin && <span className="tag admt">admin</span>}
         </div>
       </div>
-      <div className={`ca`} onClick={e => e.stopPropagation()}>
+      <div className="ca" onClick={e => e.stopPropagation()}>
         <div className={`cab ${isFav?"fv":""}`} onClick={e => { e.stopPropagation(); onFav(p.id); }}>
           <Ic.Heart f={isFav} />
         </div>
@@ -1032,7 +890,6 @@ function AppInner() {
   const [recent, setRecent] = useState([]);
   const [view, setView] = useState("grid");
   const [tagF, setTagF] = useState(null);
-  const [sbOpen, setSbOpen] = useState(false);
   const sRef = useRef(null);
   const logoRef = useRef(null);
   const [logoImg, setLogoImg] = useState(null);
@@ -1073,8 +930,8 @@ function AppInner() {
     setFavs(prev => { const n = new Set(prev); if (n.has(id)) n.delete(id); else n.add(id); return n; });
   }, []);
 
-  const navCat = (cat, sub) => { setPage("catalogue"); setSelCat(cat); setSelSub(sub || null); setSq(""); setTagF(null); setSbOpen(false); };
-  const navPage = (p) => { setPage(p); if (p !== "catalogue") { setSelCat(null); setSelSub(null); } setSq(""); setTagF(null); setSbOpen(false); };
+  const navCat = (cat, sub) => { setPage("catalogue"); setSelCat(cat); setSelSub(sub || null); setSq(""); setTagF(null); };
+  const navPage = (p) => { setPage(p); if (p !== "catalogue") { setSelCat(null); setSelSub(null); } setSq(""); setTagF(null); };
 
   const catCounts = useMemo(() => {
     const c = {};
@@ -1095,11 +952,8 @@ function AppInner() {
     <>
       <style>{CSS}</style>
       <div className="app">
-        {/* ─── MOBILE SIDEBAR OVERLAY ─── */}
-        {sbOpen && <div className="sb-overlay" onClick={() => setSbOpen(false)} />}
-
         {/* ─── SIDEBAR ─── */}
-        <aside className={`sb ${sbOpen ? "sb-open" : ""}`}>
+        <aside className="sb">
           <div className="sb-logo">
             <div className="logo-m" onClick={() => logoRef.current.click()} title="Click to change logo">
               <input ref={logoRef} type="file" accept="image/*" style={{ display: "none" }} onChange={handleLogoPick} />
@@ -1187,9 +1041,6 @@ function AppInner() {
         <div className="mn">
           {/* HEADER */}
           <header className="hd">
-            <button className="hbg" onClick={() => setSbOpen(o => !o)} aria-label="Toggle menu">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </button>
             <div className="pt">{pageTitle}</div>
             {page !== "admin" && (
               <div className="sw" ref={sRef}>
@@ -1307,23 +1158,6 @@ function AppInner() {
         onRelated={p => { setSelP(p); setRecent(prev => [p,...prev.filter(x=>x.id!==p.id)].slice(0,6)); }} />}
 
       <Toasts toasts={toasts} />
-
-      {/* ─── MOBILE BOTTOM NAV ─── */}
-      <nav className="bnav">
-        <div className={`bni ${page==="catalogue"&&!selCat?"on":""}`} onClick={() => { navPage("catalogue"); setSelCat(null); setSelSub(null); }}>
-          <Ic.NavHome /><span>Catalogue</span>
-        </div>
-        <div className={`bni ${page==="favourites"?"on":""}`} onClick={() => navPage("favourites")}>
-          <Ic.NavHeart /><span>Favourites</span>
-        </div>
-        <div className={`bni ${page==="admin"?"on":""}`} onClick={() => navPage("admin")}>
-          <Ic.NavAdmin /><span>Admin</span>
-        </div>
-        <div className="bni" onClick={() => setSbOpen(o => !o)}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          <span>Menu</span>
-        </div>
-      </nav>
     </>
   );
 }
