@@ -70,7 +70,7 @@ function CatIcon({ cat, size = 26, color = "currentColor" }) {
   const Comp = CatIcons[cat] || CatIcons.default;
   return <Comp size={size} color={color} />;
 }
-const STATUS_TAGS = ["priority", "slow-moving", "new", "recommended", "focus"];
+const STATUS_TAGS = ["priority", "slow-moving", "new", "focus"];
 
 // ─── SEED DATA ────────────────────────────────────────────────────────────────
 function generateProducts() {
@@ -198,6 +198,8 @@ const Ic = {
   Upload: () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>,
   Shield: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
   Check: () => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
+  Sun: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>,
+  Moon: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>,
 };
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
@@ -234,6 +236,96 @@ const CSS = `
     --font:'Almarai',sans-serif;--mono:'Almarai',sans-serif;
     --sb:268px;--hh:64px;--tr:0.18s cubic-bezier(.4,0,.2,1);
   }
+  .dark{
+    --bg:#0D0F16;--sf:#13161F;--sf2:#191C28;--sf3:#1F2233;
+    --bd:rgba(255,255,255,0.07);--bd2:rgba(255,255,255,0.12);
+    --t:#DDE3F5;--t2:#8B97BC;--t3:#4A5270;
+    --acc:#4F7EE8;--acc2:#6B96F0;
+    --shadow:0 2px 16px rgba(0,0,0,0.50);--shadowL:0 8px 40px rgba(0,0,0,0.65);
+    background:var(--bg);color:var(--t)
+  }
+  /* sidebar */
+  .dark .sb{background:#0A0C13;box-shadow:4px 0 24px rgba(0,0,0,0.50)}
+  .dark .sb-logo{border-bottom-color:rgba(255,255,255,0.07)}
+  .dark .ni{color:rgba(255,255,255,0.45)}
+  .dark .ni:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.85)}
+  .dark .ni.on{background:rgba(79,126,232,0.18);color:#fff}
+  .dark .ni.on::before{background:#4F7EE8}
+  .dark .n-cnt{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5)}
+  .dark .ni.on .n-cnt{background:rgba(79,126,232,0.25);color:#93B4F5}
+  .dark .stat-g{background:rgba(255,255,255,0.05)}
+  .dark .sb-foot{border-top-color:rgba(255,255,255,0.07)}
+  /* header */
+  .dark .hd{background:var(--sf);border-bottom-color:var(--bd);box-shadow:0 2px 12px rgba(0,0,0,0.35)}
+  .dark .ib{background:var(--sf2);border-color:var(--bd2);color:var(--t2)}
+  .dark .ib:hover{background:var(--sf3);color:var(--t)}
+  .dark .ib.on{background:rgba(79,126,232,0.15);color:#4F7EE8;border-color:rgba(79,126,232,0.35)}
+  /* search */
+  .dark .si{background:var(--sf2);border-color:var(--bd2);color:var(--t)}
+  .dark .si:focus{background:var(--sf3);border-color:var(--acc);box-shadow:0 0 0 3px rgba(79,126,232,0.15)}
+  .dark .s-dd{background:var(--sf);border-color:var(--bd2);box-shadow:var(--shadowL)}
+  .dark .s-ri:hover{background:var(--sf2)}
+  .dark .s-rth{background:var(--sf2);border-color:var(--bd)}
+  /* filters */
+  .dark .fb{background:var(--sf);border-bottom-color:var(--bd)}
+  .dark .fc{border-color:var(--bd2);color:var(--t2)}
+  .dark .fc:hover{border-color:var(--acc);color:var(--acc)}
+  .dark .fc.on{background:var(--acc);border-color:var(--acc);color:#fff}
+  .dark .rb{background:var(--sf2);border-bottom-color:var(--bd)}
+  /* cards */
+  .dark .pc{background:var(--sf);border-color:var(--bd)}
+  .dark .pc:hover{border-color:var(--acc);box-shadow:0 8px 32px rgba(0,0,0,0.55)}
+  .dark .ci{background:var(--sf2);border-bottom-color:var(--bd)}
+  .dark .cab{background:rgba(19,22,31,0.92);border-color:var(--bd2);color:var(--t2)}
+  .dark .cab:hover{color:var(--acc);border-color:var(--acc)}
+  .dark .cbadge{background:rgba(79,126,232,0.12);color:#93B4F5}
+  /* recently viewed */
+  .dark .rv{background:var(--sf2);border-bottom-color:var(--bd)}
+  .dark .rvc{background:var(--sf);border-color:var(--bd2)}
+  .dark .rvc:hover{border-color:var(--acc);color:var(--acc)}
+  /* modal */
+  .dark .ov{background:rgba(0,0,0,0.65)}
+  .dark .mod{background:var(--sf);border-color:var(--bd2);box-shadow:var(--shadowL)}
+  .dark .mh{background:linear-gradient(135deg,rgba(79,126,232,0.10) 0%,var(--sf) 100%);border-bottom-color:var(--bd)}
+  .dark .mth{background:var(--sf2);border-color:var(--bd2)}
+  .dark .mcl{background:var(--sf2);border-color:var(--bd2);color:var(--t2)}
+  .dark .mcl:hover{background:var(--sf3)}
+  .dark .si2{background:var(--sf2);border-color:var(--bd)}
+  .dark .ri{background:var(--sf2);border-color:var(--bd)}
+  .dark .ri:hover{border-color:var(--acc);background:rgba(79,126,232,0.08)}
+  /* admin */
+  .dark .adh{background:linear-gradient(135deg,#05070D 0%,#0B1230 60%,#0D1F50 100%)}
+  .dark .ads{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.10)}
+  .dark .adtb{background:var(--sf);border-bottom-color:var(--bd)}
+  .dark .asi{background:var(--sf2);border-color:var(--bd2);color:var(--t)}
+  .dark .asi:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(79,126,232,0.15)}
+  .dark .at thead tr{background:var(--sf2)}
+  .dark .at th{border-bottom-color:var(--bd2);color:#93B4F5}
+  .dark .at tbody tr{background:var(--sf)}
+  .dark .at tbody tr:hover{background:var(--sf2)}
+  .dark .at tbody tr.ar{background:rgba(79,126,232,0.05)}
+  .dark .at tbody tr.ar:hover{background:rgba(79,126,232,0.10)}
+  .dark .at td{border-bottom-color:var(--bd)}
+  .dark .timg{background:var(--sf2);border-color:var(--bd)}
+  .dark .tbg{background:rgba(79,126,232,0.12);color:#93B4F5}
+  .dark .tbg.sd{background:var(--sf3);color:var(--t3)}
+  /* form */
+  .dark .fmh{background:linear-gradient(135deg,rgba(79,126,232,0.08) 0%,var(--sf) 100%);border-bottom-color:var(--bd)}
+  .dark .fi,.dark .fsl,.dark .fta{background:var(--sf2);border-color:var(--bd2);color:var(--t)}
+  .dark .fi:focus,.dark .fsl:focus,.dark .fta:focus{border-color:var(--acc);background:var(--sf3);box-shadow:0 0 0 3px rgba(79,126,232,0.15)}
+  .dark .fmf{background:var(--sf2);border-top-color:var(--bd)}
+  .dark .iuz{background:var(--sf2);border-color:var(--bd2)}
+  .dark .iuz:hover{border-color:var(--acc);background:rgba(79,126,232,0.06)}
+  .dark .tgo{border-color:var(--bd2);color:var(--t3)}
+  /* confirm */
+  .dark .cfb{background:var(--sf)}
+  /* toast */
+  .dark .tst{background:var(--sf);border-color:var(--bd2);box-shadow:var(--shadowL)}
+  /* scrl + misc */
+  .dark .scrl::-webkit-scrollbar-thumb{background:var(--sf3)}
+  .dark mark{background:rgba(79,126,232,0.20);color:#93B4F5}
+  .dark .emp-i{background:var(--sf2);border-color:var(--bd)}
+  .dark .pn{color:var(--t3)}
   html,body,#root{height:100%;width:100%;font-family:var(--font);overflow:hidden}
   body{background:var(--bg);color:var(--t)}
   .app{display:flex;width:100%;height:100vh;overflow:hidden;position:relative}
@@ -884,6 +976,7 @@ function AppInner() {
   const [recent, setRecent] = useState([]);
   const [view, setView] = useState("grid");
   const [tagF, setTagF] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
   const sRef = useRef(null);
   const logoRef = useRef(null);
   const [logoImg, setLogoImg] = useState(null);
@@ -945,7 +1038,7 @@ function AppInner() {
   return (
     <>
       <style>{CSS}</style>
-      <div className="app">
+      <div className={`app${darkMode ? " dark" : ""}`}>
         {/* ─── SIDEBAR ─── */}
         <aside className="sb">
           <div className="sb-logo">
@@ -1062,6 +1155,9 @@ function AppInner() {
               </div>
             )}
             <div className="ha">
+              <div className={`ib`} onClick={() => setDarkMode(d => !d)} title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}>
+                {darkMode ? <Ic.Sun /> : <Ic.Moon />}
+              </div>
               {page !== "admin" && (
                 <>
                   <div className={`ib ${view==="grid"?"on":""}`} onClick={() => setView("grid")}><Ic.Grid /></div>
