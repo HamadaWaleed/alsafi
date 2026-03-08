@@ -232,17 +232,14 @@ const CSS = `
     --acc:#1E3A8A;--acc2:#2D52C4;--gold:#E8A020;--ok:#0D7A4E;--err:#C0392B;--pu:#1E3A8A;--cy:#1565C0;
     --r:12px;--shadow:0 2px 16px rgba(30,58,138,0.10);--shadowL:0 8px 40px rgba(30,58,138,0.16);
     --font:'Almarai',sans-serif;--mono:'Almarai',sans-serif;
-    --sb:268px;--hh:64px;--bnav:0px;--tr:0.18s cubic-bezier(.4,0,.2,1);
+    --sb:268px;--hh:64px;--tr:0.18s cubic-bezier(.4,0,.2,1);
   }
-  html{height:100%;font-family:var(--font);-webkit-text-size-adjust:100%}
-  body{height:100%;background:var(--bg);color:var(--t);overflow-x:hidden;overflow-y:hidden}
-  #root{height:100%}
-
-  /* ── APP SHELL ── */
-  .app{display:flex;height:100%;width:100%;overflow:hidden;position:relative}
+  html,body,#root{height:100%;font-family:var(--font)}
+  body{background:var(--bg);color:var(--t);overflow:hidden}
+  .app{display:flex;height:100vh;overflow:hidden}
 
   /* ── SIDEBAR ── */
-  .sb{width:var(--sb);min-width:var(--sb);max-width:var(--sb);background:var(--acc);display:flex;flex-direction:column;overflow:hidden;z-index:100;box-shadow:4px 0 24px rgba(30,58,138,0.18);flex-shrink:0}
+  .sb{width:var(--sb);min-width:var(--sb);background:var(--acc);display:flex;flex-direction:column;overflow:hidden;z-index:100;box-shadow:4px 0 24px rgba(30,58,138,0.18)}
   .sb-logo{padding:20px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;gap:12px}
   .logo-m{width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;border-radius:8px;overflow:hidden}
   .logo-m img{width:40px;height:40px;object-fit:contain;border-radius:8px}
@@ -276,14 +273,13 @@ const CSS = `
   .s-l{font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.5px}
 
   /* ── MAIN COLUMN ── */
-  .mn{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;max-width:100%}
+  .mn{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
 
   /* ── HEADER ── */
-  .hd{height:var(--hh);min-height:var(--hh);background:var(--sf);border-bottom:2px solid var(--bd);display:flex;align-items:center;gap:12px;padding:0 24px;z-index:50;box-shadow:0 2px 12px rgba(30,58,138,0.06);flex-shrink:0}
-  .hbg{display:none;width:38px;height:38px;min-width:38px;border-radius:9px;background:transparent;border:none;align-items:center;justify-content:center;cursor:pointer;color:var(--t);flex-shrink:0;padding:0;-webkit-tap-highlight-color:transparent}
-  .pt{font-size:16px;font-weight:800;color:var(--t);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex-shrink:1}
-  .ha{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
-  .ib{width:36px;height:36px;border-radius:8px;background:var(--sf2);border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--t2);transition:all var(--tr);flex-shrink:0;-webkit-tap-highlight-color:transparent}
+  .hd{height:var(--hh);min-height:var(--hh);background:var(--sf);border-bottom:2px solid var(--bd);display:flex;align-items:center;gap:12px;padding:0 24px;z-index:50;box-shadow:0 2px 12px rgba(30,58,138,0.06)}
+  .pt{font-size:16px;font-weight:800;color:var(--t);white-space:nowrap}
+  .ha{display:flex;align-items:center;gap:8px;margin-left:auto}
+  .ib{width:36px;height:36px;border-radius:8px;background:var(--sf2);border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--t2);transition:all var(--tr)}
   .ib:hover{background:var(--sf3);color:var(--t);border-color:var(--bd2)}
   .ib.on{background:rgba(30,58,138,0.10);color:var(--acc);border-color:rgba(30,58,138,0.25)}
 
@@ -307,7 +303,7 @@ const CSS = `
   .s-em{padding:24px;text-align:center;color:var(--t3);font-size:13px}
 
   /* ── SCROLLABLE MAIN ── */
-  .scrl{flex:1;overflow-y:auto;overflow-x:hidden}
+  .scrl{flex:1;overflow-y:auto}
   .scrl::-webkit-scrollbar{width:5px}
   .scrl::-webkit-scrollbar-thumb{background:var(--sf3);border-radius:3px}
 
@@ -432,7 +428,7 @@ const CSS = `
   .bic{width:32px;height:32px;padding:0;border-radius:7px}
 
   /* ── TABLE ── */
-  .atw{flex:1;overflow-y:auto;overflow-x:auto;padding:16px 20px}
+  .atw{flex:1;overflow-y:auto;padding:16px 20px}
   .atw::-webkit-scrollbar{width:5px;height:5px}
   .atw::-webkit-scrollbar-thumb{background:var(--sf3);border-radius:3px}
   .at{width:100%;min-width:560px;border-collapse:separate;border-spacing:0}
@@ -506,179 +502,6 @@ const CSS = `
   .tsm{font-size:13px;font-weight:700;color:var(--t)}
   .pn{text-align:center;padding:16px;color:var(--t3);font-size:12px}
 
-  /* ── MOBILE SIDEBAR OVERLAY ── */
-  .sb-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,75,0.5);z-index:99;-webkit-tap-highlight-color:transparent}
-
-  /* ── MOBILE BOTTOM NAV ── */
-  .bnav{display:none;position:fixed;bottom:0;left:0;right:0;width:100%;background:var(--sf);border-top:1.5px solid var(--bd);z-index:200;padding:4px 0 max(4px,env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(30,58,138,0.10)}
-  .bni{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 4px;cursor:pointer;color:var(--t3);font-size:10px;font-weight:700;border-radius:8px;transition:color var(--tr);-webkit-tap-highlight-color:transparent;flex:1}
-  .bni:active,.bni.on{color:var(--acc)}
-  .bni.on{color:var(--acc)}
-
-  /* ══════════════════════════════════════════════
-     RESPONSIVE BREAKPOINTS
-  ══════════════════════════════════════════════ */
-
-  /* ── TABLET 768–1024px ── */
-  @media(max-width:1024px) and (min-width:641px){
-    :root{--sb:230px}
-    .pg{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
-    .pa{padding:14px 16px}
-    .hd{padding:0 18px;gap:10px}
-    .fb{padding:8px 16px}
-    .rb{padding:8px 16px}
-    .atw{padding:12px 16px}
-  }
-
-  /* ── MOBILE ≤640px ── */
-  @media(max-width:640px){
-    :root{--hh:56px}
-
-    /* ── Prevent any horizontal overflow ── */
-    html,body,#root{overflow-x:hidden;width:100%}
-    .app{overflow-x:hidden;width:100%;position:fixed;inset:0}
-
-    /* ── Sidebar: off-canvas drawer ── */
-    .sb{
-      position:fixed;top:0;left:0;bottom:0;
-      width:80vw;max-width:300px;min-width:0;
-      transform:translateX(-100%);
-      transition:transform 0.3s cubic-bezier(.4,0,.2,1);
-      z-index:200;
-      will-change:transform;
-      height:100%;
-      overflow-y:auto
-    }
-    .sb.sb-open{transform:translateX(0)}
-    .sb-overlay{display:block}
-
-    /* ── Main: full width ── */
-    .mn{width:100%;max-width:100%;flex:1;padding-bottom:60px}
-
-    /* ── Header ── */
-    .hd{height:var(--hh);min-height:var(--hh);padding:0 12px;gap:8px}
-    .hbg{display:flex}
-    .pt{font-size:14px;max-width:120px}
-    .sw{flex:1;min-width:0;max-width:none}
-    .si{font-size:13px;padding:8px 32px 8px 34px}
-    .ha{gap:6px}
-    .ib{width:34px;height:34px}
-
-    /* ── Filter bar ── */
-    .fb{padding:8px 10px;gap:6px}
-    .fl{display:none}
-    .fdiv{display:none}
-    .fc{padding:4px 10px;font-size:11px}
-    .rb{padding:7px 12px}
-    .rc{font-size:11px}
-
-    /* ── Product grid: 2 col ── */
-    .pa{padding:10px}
-    .pg{grid-template-columns:repeat(2,1fr);gap:8px}
-    .pg.lv{grid-template-columns:1fr;gap:8px}
-    .ci{height:90px}
-    .cb{padding:9px}
-    .cn{font-size:12px;margin-bottom:3px}
-    .cd{font-size:10px}
-    .csk{font-size:9px;margin-top:4px}
-    .ct{margin-top:4px;gap:3px}
-    .tag{font-size:8px;padding:1px 5px}
-    .cbadge{font-size:8px;padding:1px 5px;margin-bottom:4px}
-
-    /* ── Card actions: always visible on touch ── */
-    .ca{opacity:1;top:6px;right:6px}
-    .cab{width:28px;height:28px}
-
-    /* ── Modal: bottom sheet ── */
-    .ov{padding:0;align-items:flex-end}
-    .mod,.mod.adm-mod,.mod.cf-mod{
-      border-radius:24px 24px 0 0;
-      max-width:100%;width:100%;
-      max-height:90vh;
-      border-bottom:none;
-      border-left:none;border-right:none
-    }
-    .mh{padding:16px 14px 12px;gap:12px}
-    .mth{width:52px;height:52px;min-width:52px}
-    .mti{font-size:14px}
-    .msk{font-size:11px}
-    .mcl{width:30px;height:30px}
-    .mb{padding:14px}
-    .ms{margin-bottom:14px}
-    .sg{grid-template-columns:1fr 1fr;gap:6px}
-    .si2{padding:8px 10px}
-    .sk{font-size:9px}
-    .sv{font-size:12px}
-    .rg{grid-template-columns:repeat(2,1fr);gap:6px}
-
-    /* ── Admin panel ── */
-    .adh{padding:14px 14px 12px}
-    .adht{font-size:16px;gap:8px}
-    .adhs{font-size:11px}
-    .adss{gap:8px;margin-top:10px}
-    .ads{padding:8px 10px;min-width:60px}
-    .adsv{font-size:16px}
-    .adsl{font-size:9px}
-    .adtb{padding:8px 10px;gap:8px}
-    .asw{width:100%;flex:unset;order:2}
-    .adtb .btn{order:1;padding:8px 14px;font-size:12px}
-    .atw{padding:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
-
-    /* ── Form ── */
-    .fg{grid-template-columns:1fr;gap:10px}
-    .fgr.full{grid-column:1}
-    .fmh{padding:14px}
-    .fmb{padding:12px 14px}
-    .fmf{padding:10px 14px;gap:8px}
-    .fmf .btn{flex:1}
-    .cfb{padding:20px 16px 14px}
-    .cfi{width:48px;height:48px}
-    .cft{font-size:15px}
-    .cff{padding:0 14px 14px;gap:8px}
-    .cff .btn{flex:1}
-
-    /* ── Bottom nav ── */
-    .bnav{display:flex}
-
-    /* ── Toast ── */
-    .tc{bottom:70px;left:10px;right:10px;max-width:none}
-    .tst{width:100%}
-
-    /* ── Recently viewed ── */
-    .rv{padding:8px 10px}
-    .rvc{font-size:11px;padding:4px 8px}
-
-    /* ── Search dropdown ── */
-    .s-dd{max-height:260px}
-    .s-rsk{display:none}
-    .s-ri{padding:9px 12px;gap:10px}
-    .s-rth{width:32px;height:32px}
-
-    /* ── Misc ── */
-    .emp{padding:40px 16px}
-    .pn{padding:12px}
-  }
-
-  /* ── SMALL PHONES ≤380px ── */
-  @media(max-width:380px){
-    .pg{grid-template-columns:1fr}
-    .pt{max-width:80px;font-size:13px}
-    .ib:not(:first-child){display:none}
-    .ha{gap:4px}
-    .hd{padding:0 10px;gap:6px}
-    .ci{height:110px}
-  }
-
-  /* ── LARGE SCREENS ≥1400px ── */
-  @media(min-width:1400px){
-    :root{--sb:290px}
-    .pg{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-    .pa{padding:20px 28px}
-    .hd{padding:0 28px}
-    .fb{padding:10px 28px}
-    .rb{padding:10px 28px}
-    .atw{padding:16px 28px}
-  }
 `;
 
 // ─── TOAST ────────────────────────────────────────────────────────────────────
@@ -1061,7 +884,6 @@ function AppInner() {
   const [recent, setRecent] = useState([]);
   const [view, setView] = useState("grid");
   const [tagF, setTagF] = useState(null);
-  const [sbOpen, setSbOpen] = useState(false);
   const sRef = useRef(null);
   const logoRef = useRef(null);
   const [logoImg, setLogoImg] = useState(null);
@@ -1102,8 +924,8 @@ function AppInner() {
     setFavs(prev => { const n = new Set(prev); if (n.has(id)) n.delete(id); else n.add(id); return n; });
   }, []);
 
-  const navCat = (cat, sub) => { setPage("catalogue"); setSelCat(cat); setSelSub(sub || null); setSq(""); setTagF(null); setSbOpen(false); };
-  const navPage = (p) => { setPage(p); if (p !== "catalogue") { setSelCat(null); setSelSub(null); } setSq(""); setTagF(null); setSbOpen(false); };
+  const navCat = (cat, sub) => { setPage("catalogue"); setSelCat(cat); setSelSub(sub || null); setSq(""); setTagF(null); };
+  const navPage = (p) => { setPage(p); if (p !== "catalogue") { setSelCat(null); setSelSub(null); } setSq(""); setTagF(null); };
 
   const catCounts = useMemo(() => {
     const c = {};
@@ -1124,11 +946,8 @@ function AppInner() {
     <>
       <style>{CSS}</style>
       <div className="app">
-        {/* ─── MOBILE SIDEBAR OVERLAY ─── */}
-        {sbOpen && <div className="sb-overlay" onClick={() => setSbOpen(false)} />}
-
         {/* ─── SIDEBAR ─── */}
-        <aside className={`sb ${sbOpen ? "sb-open" : ""}`}>
+        <aside className="sb">
           <div className="sb-logo">
             <div className="logo-m" onClick={() => logoRef.current.click()} title="Click to change logo">
               <input ref={logoRef} type="file" accept="image/*" style={{ display: "none" }} onChange={handleLogoPick} />
@@ -1216,9 +1035,6 @@ function AppInner() {
         <div className="mn">
           {/* HEADER */}
           <header className="hd">
-            <button className="hbg" onClick={() => setSbOpen(o => !o)} aria-label="Toggle menu">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </button>
             <div className="pt">{pageTitle}</div>
             {page !== "admin" && (
               <div className="sw" ref={sRef}>
@@ -1337,22 +1153,6 @@ function AppInner() {
 
       <Toasts toasts={toasts} />
 
-      {/* ─── MOBILE BOTTOM NAV ─── */}
-      <nav className="bnav">
-        <div className={`bni ${page==="catalogue"&&!selCat?"on":""}`} onClick={() => { navPage("catalogue"); setSelCat(null); setSelSub(null); }}>
-          <Ic.NavHome /><span>Catalogue</span>
-        </div>
-        <div className={`bni ${page==="favourites"?"on":""}`} onClick={() => navPage("favourites")}>
-          <Ic.NavHeart /><span>Favourites</span>
-        </div>
-        <div className={`bni ${page==="admin"?"on":""}`} onClick={() => navPage("admin")}>
-          <Ic.NavAdmin /><span>Admin</span>
-        </div>
-        <div className="bni" onClick={() => setSbOpen(o => !o)}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          <span>Menu</span>
-        </div>
-      </nav>
     </>
   );
 }
